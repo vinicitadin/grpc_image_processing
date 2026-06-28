@@ -16,5 +16,5 @@ message ApplyFilterResponse {
 }
 
 message ImageFilterGray {
-	int32 intensity = 1;
+	float intensity = 1;
 }
