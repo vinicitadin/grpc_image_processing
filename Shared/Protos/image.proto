@@ -5,16 +5,16 @@ option csharp_namespace = "Server";
 package image;
 
 message ApplyFilterRequest {
-	string image = 1;
+	bytes image = 1;
 	oneof filter {
 		ImageFilterGray gray_filter = 2;
 	}
 }
 
 message ApplyFilterResponse {
-	string image = 1;
+	bytes image = 1;
 }
 
 message ImageFilterGray {
-	int32 value = 1;
+	int32 intensity = 1;
 }
