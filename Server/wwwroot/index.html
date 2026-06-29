@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filtro Cinza</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <div class="hero-card hero-large">
+      <div class="hero-top">
+        <h1>Converta sua imagem para <strong>cinza</strong></h1>
+        <p class="sub">Selecione uma imagem, envie para processamento e baixe o resultado.</p>
+      </div>
+
+      <div class="center-area">
+        <div class="left-panel">
+          <div class="drop-area">
+            <input id="imageInput" type="file" accept="image/*" />
+            <div class="drop-inner">
+              <div class="drop-icon">+</div>
+              <div class="drop-text">Selecionar arquivo</div>
+              <div class="drop-hint">ou arraste e solte a imagem aqui</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-panel">
+          <div class="preview-card large" id="previewCard">
+            <img id="previewImage" alt="Pré-visualização da imagem" />
+            <div class="preview-empty">Sem imagem</div>
+          </div>
+
+          <div class="controls">
+            <button id="sendButton" class="primary-button large" disabled>Enviar para processamento</button>
+            <a id="downloadLink" class="primary-button large disabled" download="resultado.png">Baixar resultado</a>
+          </div>
+
+          <div id="statusMessage" class="status-message" aria-live="polite">Aguardando imagem...</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
