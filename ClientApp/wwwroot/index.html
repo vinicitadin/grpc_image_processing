@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ClientApp - Ponta de Comunicação</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f7fb; color: #122033; }
+    .container { max-width: 900px; margin: 40px auto; padding: 24px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    h1 { margin-top: 0; }
+    .panel { margin-top: 20px; padding: 20px; border: 1px solid #e5e7eb; border-radius: 16px; }
+    button { padding: 10px 16px; border: none; border-radius: 10px; background: #2563eb; color: white; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
+    .status { margin-top: 12px; color: #475569; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ClientApp - Outra ponta da comunicação</h1>
+    <p>Este projeto representa a segunda ponta da comunicação em ASP.NET, sem integração real com o backend.</p>
+
+    <div class="panel">
+      <h3>Enviar imagem para processamento</h3>
+      <input type="file" id="imageInput" />
+      <button id="sendButton">Enviar imagem</button>
+      <div id="status" class="status">Nenhuma imagem selecionada.</div>
+    </div>
+  </div>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const sendButton = document.getElementById('sendButton');
+    const status = document.getElementById('status');
+
+    sendButton.addEventListener('click', () => {
+      const file = imageInput.files?.[0];
+      if (!file) {
+        status.textContent = 'Selecione uma imagem antes de enviar.';
+        return;
+      }
+
+      status.textContent = `Imagem selecionada: ${file.name}. Aqui seria enviada para o backend real.`;
+    });
+  </script>
+</body>
+</html>
