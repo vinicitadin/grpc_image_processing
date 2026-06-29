@@ -27,11 +27,16 @@
       <section class="preview-section hidden" id="previewSection">
         <div class="preview-header">
           <span>Pré-visualização</span>
-          <button id="applyFilterButton" class="primary-button">Aplicar filtro cinza</button>
+          <div class="actions">
+            <button id="applyFilterButton" class="primary-button">Aplicar filtro cinza</button>
+            <button id="sendButton" class="secondary-button">Enviar para servidor</button>
+            <a id="downloadLink" class="primary-button disabled" download="resultado.png">Baixar resultado</a>
+          </div>
         </div>
         <div class="preview-card">
           <img id="previewImage" alt="Pré-visualização da imagem" />
         </div>
+        <div id="statusMessage" class="status-message" aria-live="polite"></div>
       </section>
 
     

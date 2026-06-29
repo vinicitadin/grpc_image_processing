@@ -172,6 +172,33 @@ p {
   border: 1px solid #e2e8f0;
 }
 
+.actions {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.secondary-button {
+  border: 1px solid #e5e7eb;
+  background: white;
+  color: #111827;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.status-message {
+  margin-top: 12px;
+  color: #374151;
+  font-size: 0.95rem;
+}
+
 @media (max-width: 720px) {
   .hero-card {
     padding: 28px 20px;
