@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filtro Cinza</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <div class="hero-card">
+      <div class="hero-header">
+        <div class="hero-badge">Filtro Cinza</div>
+        <h1>Transforme sua foto em imagem cinza</h1>
+        <p>Escolha uma foto ou imagem, visualize e aplique o filtro cinza diretamente no navegador.</p>
+      </div>
+
+      <div class="upload-panel">
+        <label class="upload-box" for="imageInput">
+          <div class="upload-icon">+</div>
+          <div class="upload-text">Selecionar imagem</div>
+          <div class="upload-hint">ou arraste e solte a imagem aqui</div>
+          <input id="imageInput" type="file" accept="image/*" hidden />
+        </label>
+      </div>
+
+      <section class="preview-section hidden" id="previewSection">
+        <div class="preview-header">
+          <span>Pré-visualização</span>
+          <button id="applyFilterButton" class="primary-button">Aplicar filtro cinza</button>
+        </div>
+        <div class="preview-card">
+          <img id="previewImage" alt="Pré-visualização da imagem" />
+        </div>
+      </section>
+
+    
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
