@@ -9,6 +9,3 @@ obj/
 *.cache
 *.pdb
 *.dll
-
-# SixLabors license file
-sixlabors.lic

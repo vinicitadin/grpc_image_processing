@@ -10,7 +10,7 @@
     <PackageReference Include="Grpc.AspNetCore" Version="2.80.0" />
     <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.80.0" />
     <PackageReference Include="Grpc.AspNetCore.Web" Version="2.80.0" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="4.0.0" />
+    <PackageReference Include="SkiaSharp" Version="2.88.9" />
   </ItemGroup>
 
   <ItemGroup>

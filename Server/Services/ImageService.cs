@@ -1,8 +1,6 @@
 ﻿using Google.Protobuf;
 using Grpc.Core;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
-using SixLabors.ImageSharp.Processing;
+using SkiaSharp;
 
 namespace Server.Services
 {
@@ -54,15 +52,48 @@ namespace Server.Services
         {
             intensity = Math.Clamp(intensity / 100f, 0f, 1f);
 
-            using Image<Rgba32> image = Image.Load<Rgba32>(imageBytes);
+            using var stream = new MemoryStream(imageBytes);
 
-            image.Mutate(x => x.Grayscale(intensity));
+            using var codec = SKCodec.Create(stream) ?? throw new InvalidOperationException("Imagem inválida.");
 
-            using MemoryStream ms = new MemoryStream();
+            var format = codec.EncodedFormat;
 
-            image.SaveAsPng(ms);
+            stream.Position = 0;
 
-            return ms.ToArray();
+            using var bitmap = SKBitmap.Decode(stream) ?? throw new InvalidOperationException("Não foi possível decodificar a imagem.");
+
+            float inv = 1f - intensity;
+
+            const float r = 0.2126f;
+            const float g = 0.7152f;
+            const float b = 0.0722f;
+
+            float[] matrix =
+            {
+                inv + intensity * r, intensity * g,       intensity * b,       0, 0,
+                intensity * r,       inv + intensity * g, intensity * b,       0, 0,
+                intensity * r,       intensity * g,       inv + intensity * b, 0, 0,
+                0,                   0,                   0,                   1, 0
+            };
+
+            using var paint = new SKPaint
+            {
+                ColorFilter = SKColorFilter.CreateColorMatrix(matrix)
+            };
+
+            var info = new SKImageInfo(bitmap.Width, bitmap.Height);
+
+            using var surface = SKSurface.Create(info);
+
+            surface.Canvas.Clear(SKColors.Transparent);
+
+            surface.Canvas.DrawBitmap(bitmap, 0, 0, paint);
+
+            using var image = surface.Snapshot();
+
+            using var data = image.Encode(format, 100);
+
+            return data.ToArray();
         }
     }
 }
