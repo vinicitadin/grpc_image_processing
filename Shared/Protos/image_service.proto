@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option csharp_namespace = "Server";
+
+package image;
+
+import "Protos/image.proto";
+
+service ImageService {
+	rpc ApplyFilter (ApplyFilterRequest) returns (ApplyFilterResponse);
+}
